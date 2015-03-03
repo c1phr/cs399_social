@@ -18,7 +18,15 @@ class UserProfileForm(forms.ModelForm):
     
     
 class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = []
+        
     post_data = forms.CharField(max_length=256, required=True)
     
 class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = []
+        
     comment_data = forms.CharField(max_length=256, required=True)
