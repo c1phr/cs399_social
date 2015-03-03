@@ -1,10 +1,11 @@
 from django.core import serializers
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from main.forms import UserForm, UserProfileForm
+from main.forms import UserProfileForm
 from django.template import RequestContext
 from main.models.comment import Comment
 from main.models.post import Post
+from main.models.userprofile import UserProfile
 
 
 def home(request):
@@ -13,24 +14,20 @@ def home(request):
 
 def register(request):
     if request.method == 'POST':
-        uf = UserForm(request.POST, prefix='user')
-        upf = UserProfileForm(request.post, prefix='userprofile')
-        if uf.is_valid() * upf.is_valid():
-            phonenumber = forms.RegexField(regex=r'^\+?1?\d{9,15}$',
-                                           error_message=(
-                                               "Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."))
-            user = uf.save()
-            userprofile = upf.save(commit=False)
-            userprofile.user = user
-            userprofile.save()
+        upf = UserProfileForm(request.POST)
+        if upf.is_valid():
+            u = UserProfile()
+            u.phone_number = upf.cleaned_data["phone_number"]
+            u.first_name = upf.cleaned_data["first_name"]
+            u.last_name = upf.cleaned_data["last_name"]
+            u.user_name = upf.cleaned_data["user_name"]
+            u.save()
             return HttpResponseRedirect('main/home.html')
+    elif request.method == 'GET':
+        upf = UserProfileForm()
     else:
-        uf = UserForm(prefix='user')
-        upf = UserProfileForm(prefix='userprofile')
-    return render_to_response('main/register.html',
-                              dict(userform=uf,
-                                   userprofileform=upf),
-                              context_instance=RequestContext(request))
+        return HttpResponseRedirect("/404/")
+    return render(request, 'main/register.html', {"upf": upf})
 
 
 '''
