@@ -7,6 +7,7 @@ from views import home, register
 urlpatterns = patterns('',
     
     url(r'^$', 'main.views.home', name='home'),
+    url(r'^about/', 'main.views.about', name='about'),
     url(r'^register/$', 'main.views.register', name='register'),
     url(r'^admin/', include(admin.site.urls)),
     (r'^login/$', 'django.contrib.auth.views.login', {

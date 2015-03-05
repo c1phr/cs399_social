@@ -11,6 +11,9 @@ from main.models.userprofile import UserProfile
 def home(request):
     return render(request, 'main/home.html', {})
 
+def about(request):
+    return render(request, 'main/about.html', {})
+
 
 def register(request):
     if request.method == 'POST':
