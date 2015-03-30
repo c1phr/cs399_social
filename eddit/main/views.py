@@ -25,12 +25,12 @@ def register(request):
             u.last_name = upf.cleaned_data["last_name"]
             u.user_name = upf.cleaned_data["user_name"]
             u.save()
-            return HttpResponseRedirect('main/home.html')
+            return HttpResponseRedirect("/")
     elif request.method == 'GET':
         upf = UserProfileForm()
     else:
         return HttpResponseRedirect("/404/")
-    return render(request, 'main/register.html', {"upf": upf})
+    return render(request, 'register.html', {"upf": upf})
 
 
 '''
