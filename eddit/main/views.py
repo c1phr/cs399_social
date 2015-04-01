@@ -6,6 +6,8 @@ from django.template import RequestContext
 from main.models.comment import Comment
 from main.models.post import Post
 from main.models.userprofile import UserProfile
+from rest_framework import viewsets
+from main.serializers import CommentSerializer, PostSerializer
 
 
 def home(request):
@@ -32,6 +34,14 @@ def register(request):
         return HttpResponseRedirect("/404/")
     return render(request, 'register.html', {"upf": upf})
 
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
 
 '''
 @:param id:Optional -> Returns a single post
