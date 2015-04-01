@@ -1,9 +1,68 @@
 {% extends "main/base.html" %}
-
+{% load staticfiles %}
 {% block title %}About Us{% endblock %}
 
 {% block content %}
-	<center><h1>About the Team</h1></center>
+
+	<div class="container">
+		<center><h1 class="about-title">About the Team</h1></center>
+		<div class="col-xs-6 col-md-4">
+			<div class="thumbnail">
+				<center><img src="{% static 'images/ryan_batchelder.png' %}" class="img-circle" width="250" height="250"></center>
+				<div class="caption">
+				<center><h2>Ryan Batchelder</h2></center>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+			<div class="thumbnail">
+				<img src="{% static 'images/ryan_dooley.png' %}" class="img-circle" width="250" height="250">
+				<div class="caption">
+					<center><h2>Ryan Dooley</h2></center>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+			<div class="thumbnail">
+				<center><img src="{% static 'images/john_dance.png' %}" class="img-circle" width="250" height="250"></center>
+				<div class="caption">
+					<center><h2>John Dance</h2></center>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+			<div class="thumbnail">
+				<img src="{% static 'images/brandon_paree.png' %}" class="img-circle" width="250" height="250">
+				<div class="caption">
+					<center><h2>Brandon Paree</h2></center>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+			<div class="thumbnail">
+				<img src="{% static 'images/kyle_mcginn.png' %}" class="img-circle" width="250" height="250">
+				<div class="caption">
+					<center><h2>Kyle McGinn</h2></center>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6 col-md-4">
+			<div class="thumbnail">
+				<img src="{% static 'images/jsl_98.png' %}" class="img-circle" width="250" height="250">
+				<div class="caption">
+					<center><h2>JSL 98</h2></center>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="container-fluid">
+		<div class="about-content">
+		<p class="lead">
+			Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32. 
+		</p>
+		</div>
+	</div>
 
 
 {% endblock %}
