@@ -1,7 +1,7 @@
 from django.core import serializers
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from main.forms import UserProfileForm, PostForm, CommentForm
+from main.forms import PostForm, CommentForm
 from django.template import RequestContext
 from main.models.comment import Comment
 from main.models.post import Post

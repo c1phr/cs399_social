@@ -4,8 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-3 col-sm-12">
         {% if messages %}
             <div class="alert alert-success" role="alert">
                 {% for message in messages %}
@@ -13,7 +12,7 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <h1>Create a new account</h1>
+        <h1>Create your AWWWcount</h1>
 
         <form class="form-horizontal" action="{% url 'newuser' %}" method="post">
             <div class="form-group">
@@ -23,7 +22,6 @@
             </div>
         </form>
         </div>
-        <div class="col-md-3"></div>
     </div>
 </div>
 

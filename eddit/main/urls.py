@@ -15,7 +15,6 @@ urlpatterns = patterns('',
     url(r'^about/', 'main.views.views.about', name='about'),
     url(r'^register/', 'main.views.register.new_user', name='newuser'),
     url(r'^admin/', include(admin.site.urls)),
-    (r'^login/$', 'django.contrib.auth.views.login', {
-    'template_name': 'main/login.html'
-    }),
+    url(r'^login/', 'main.views.login.user_login', name='login'),
+    url(r'^logout/', 'main.views.login.user_logout', name='logout'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
