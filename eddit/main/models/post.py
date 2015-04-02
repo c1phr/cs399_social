@@ -1,9 +1,25 @@
 from django.db import models
-#from main.models.user import User
-
+from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
 
 class Post(models.Model):
-    id = models.IntegerField(max_length=10, primary_key=True, editable=False)
-    #author = models.ForeignKey(User)
-    post_date = models.DateTimeField(auto_now=True)
-    post_content = models.TextField()
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    text = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.title
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('blog_post_detail', (), 
+                {
+                    'slug' :self.slug,
+                })
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
