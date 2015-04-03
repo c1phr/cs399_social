@@ -9,6 +9,7 @@
 .splash {
 	font-family: 'Lato', serif;
 	font-size: 48px;
+    /* http://www.imgbase.info/images/safe-wallpapers/animals/cat/47099_cat_aww_kittens_playing_kitten.jpg */
 	background: url(../../../static/images/splash.png) no-repeat center center fixed;
 }
 
