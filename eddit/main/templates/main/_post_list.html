@@ -1,12 +1,18 @@
 <table class="table table-hover">
         <thead>
-            <th style="width: 25%;">Date</th>
+            <th style="width: 20%;">Date</th>
+            <th style="width: 10%">Votes</th>
             <th style="width: 50%;">Title</th>
-            <th style="width: 25%;">Author</th>
+            <th style="width: 20%;">Author</th>
         </thead>
 {% for post in posts %}
     <tr>
         <td>{{ post.post_date }}</td>
+        <td>
+            <span class="glyphicon glyphicon-arrow-down downvote" aria-hidden="true" data-post-id="{{ post.id }}"></span>
+            {{ post.post_votes }}
+            <span class="glyphicon glyphicon-arrow-up upvote" aria-hidden="true" data-post-id="{{ post.id }}"></span>
+        </td>
         <td><a href="/posts/?id={{ post.id }}">{{ post.post_title }}</a></td>
         <td>{{ post.author.username }}</td>
     </tr>

@@ -8,3 +8,4 @@ class Post(models.Model):
     post_title = models.TextField(max_length=50)
     post_date = models.DateTimeField(auto_now=True, editable=False)
     post_link = models.TextField()
+    post_votes = models.IntegerField(max_length=100)

@@ -43,7 +43,10 @@
 
 <script>
     $(function(){
-        $("#post-container").load('/post_list/');
+        $("#post-container").load('/post_list/', function(){
+            bindVoteButtons();
+        });
+
         $("#submitNewPost").on("click", function(){
             $.ajaxSetup({
                 headers: { "X-CSRFToken": "{{ csrf_token }}" }
@@ -55,12 +58,15 @@
                     'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
                     'post_title': $("#post-title").val(),
                     'post_link': $("#post-link").val(),
-                    'author': $("#user-id").val()
+                    'author': $("#user-id").val(),
+                    'post_votes': 0
                 }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(){
-                    $("#post-container").load('/post_list/');
+                    $("#post-container").load('/post_list/', function(){
+                            bindVoteButtons();
+                        });
                     $("#newPostModal").modal('hide');
                 },
                 error: function(err) {
@@ -68,6 +74,55 @@
                 }
             });
         });
+
+        function bindVoteButtons(){
+            $(".upvote").on('click', function(){
+                var post_id = $(this).data('post-id');
+                $.ajaxSetup({
+                    headers: { "X-CSRFToken": "{{ csrf_token }}" }
+                });
+                $.ajax({
+                    url: '/posts/upvote/',
+                    type: 'POST',
+                    data: {
+                        'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
+                        'post_id': post_id
+                    },
+
+                    success: function(){
+                        $("#post-container").load('/post_list/', function(){
+                            bindVoteButtons();
+                        })
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+            $(".downvote").on('click', function(){
+                var post_id = $(this).data('post-id');
+                $.ajaxSetup({
+                    headers: { "X-CSRFToken": "{{ csrf_token }}" }
+                });
+                $.ajax({
+                    url: '/posts/downvote/',
+                    type: 'POST',
+                    data: {
+                        'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
+                        'post_id': post_id
+                    },
+
+                    success: function(){
+                        $("#post-container").load('/post_list/', function(){
+                            bindVoteButtons();
+                        });
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            });
+        }
     });
 </script>
 {% endblock %}
