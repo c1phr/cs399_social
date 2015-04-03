@@ -10,8 +10,12 @@ from main.models.post import Post
 def posts(request):
     post_id = request.GET.get('id', None)
     if not post_id:
-        return render(request, "main/posts.html", {'posts': Post.objects.all()})
+        return render(request, "main/posts.html")
     return render(request, "main/post_detail.html", {'post': Post.objects.filter(id=post_id).first(), 'comments': Comment.objects.filter(parent_post=post_id)})
+
+@login_required
+def posts_partial(request):
+    return render(request, "main/_post_list.html", {'posts': Post.objects.all()})
 
 @login_required
 def post_comment(request):

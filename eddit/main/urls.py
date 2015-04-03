@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^login/', 'main.views.login.user_login', name='login'),
     url(r'^logout/', 'main.views.login.user_logout', name='logout'),
     url(r'^post_comment/', 'main.views.posts.post_comment'),
+    url(r'^post_list/', 'main.views.posts.posts_partial'),
     url(r'^posts/', 'main.views.posts.posts', name='posts'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

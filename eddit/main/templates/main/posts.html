@@ -10,21 +10,64 @@
 
 
 {% block content %}
-    <table class="table table-hover">
-        <thead>
-            <th style="width: 25%;">Date</th>
-            <th style="width: 50%;">Title</th>
-            <th style="width: 25%;">Author</th>
-        </thead>
-        {% for post in posts %}
+    <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#newPostModal">New Post</button>
 
-        <tr>
-            <td>{{ post.post_date }}</td>
-            <td><a href="/posts/?id={{ post.id }}">{{ post.post_title }}</a></td>
-            <td>{{ post.author.username }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div id="post-container"></div>
 
+    <div class="modal fade" id="newPostModal" role="dialog" aria-labelledby="newPostModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Create New Post</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+                {% csrf_token %}
+                <input type="hidden" id="user-id" value="{{ user.id }}">
+                <div class="form-group">
+                    <input type="text" id="post-title" class="form-control" name="post-title" placeholder="Post Title" />
+                </div>
+                <div class="form-group">
+                    <input type="text" id="post-link" class="form-control" name="post-link" placeholder="Post Link" />
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            <button type="button" id="submitNewPost" class="btn btn-primary">Create Post</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
+<script>
+    $(function(){
+        $("#post-container").load('/post_list/');
+        $("#submitNewPost").on("click", function(){
+            $.ajaxSetup({
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            });
+            $.ajax({
+                url: '/api/posts/',
+                type: 'POST',
+                data: JSON.stringify({
+                    'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').prop('value'),
+                    'post_title': $("#post-title").val(),
+                    'post_link': $("#post-link").val(),
+                    'author': $("#user-id").val()
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(){
+                    $("#post-container").load('/post_list/');
+                    $("#newPostModal").modal('hide');
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
