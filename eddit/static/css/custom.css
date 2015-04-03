@@ -5,3 +5,78 @@
 .jumbotron {
 	width: 100%;
 }
+
+.splash {
+	font-family: 'Lato', serif;
+	font-size: 48px;
+	background: url(../../../static/images/splash.png) no-repeat center center fixed;
+}
+
+.ghost-button {
+	margin-top: 10%;
+	margin-left: 20%;
+	display: inline-block;
+	width: 200px;
+	padding: 8px;
+	color: #fff;
+	border: 2px solid #fff;
+	text-align: center;
+	outline: none;
+	text-decoration: none;
+	transition: background-color 0.2s ease-out,
+				color 0.2s ease-out;
+}
+
+.ghost-button2 {
+	margin-top: 5%;
+	margin-left: 20%;
+	display: inline-block;
+	width: 200px;
+	padding: 8px;
+	color: #fff;
+	border: 2px solid #fff;
+	text-align: center;
+	outline: none;
+	text-decoration: none;
+	transition: background-color 0.2s ease-out,
+				color 0.2s ease-out;
+}
+
+.ghost-button:hover,
+.ghost-button:active {
+	background-color: #fff;
+	color: #000;
+	transition: background-color 0.3s ease-in,
+		    	color 0.3s ease-in;
+}
+
+.ghost-button2:hover,
+.ghost-button2:active {
+	background-color: #fff;
+	color: #000;
+	transition: background-color 0.3s ease-in,
+		    	color 0.3s ease-in;
+}
+
+.ghost-button3 {
+	margin-top: 5%;
+	margin-left: 20%;
+	display: inline-block;
+	width: 200px;
+	padding: 8px;
+	color: #fff;
+	border: 2px solid #fff;
+	text-align: center;
+	outline: none;
+	text-decoration: none;
+	transition: background-color 0.2s ease-out,
+				color 0.2s ease-out;
+}
+
+.ghost-button3:hover,
+.ghost-button3:active {
+	background-color: #fff;
+	color: #000;
+	transition: background-color 0.3s ease-in,
+		    	color 0.3s ease-in;
+}
