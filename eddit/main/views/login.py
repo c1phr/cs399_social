@@ -10,16 +10,17 @@ class LoginForm(forms.Form):
 	username = forms.CharField(max_length=30)
 	password = forms.CharField(widget=forms.PasswordInput())
 
+
 def user_login(request):
 	if request.method == 'POST':
 		form = LoginForm(request.POST)
 		if form.is_valid():
 			username = form.cleaned_data["username"]
 			password = form.cleaned_data["password"]
-			user = authenticate(username = username, password = password)
+			user = authenticate(username=username, password=password)
 			if user is not None:
 				login(request, user)
-				return HttpResponseRedirect('/')
+				return HttpResponseRedirect('/posts/')
 			else:
 				messages.error(request, 'Incorrect username or password')
 				return HttpResponseRedirect('/login/')
@@ -28,6 +29,7 @@ def user_login(request):
 	else:
 		return HttpResponseRedirect('/login/')
 	return render(request, "main/login.html", {"form": form})
+
 
 def user_logout(request):
 	logout(request)
