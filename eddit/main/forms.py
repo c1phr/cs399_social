@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django import forms
 from django.http import HttpResponseRedirect
 from django.db import models
-from main.models import UserProfile, Post, Comment 
+from main.models import Post, Comment 
     
 class PostForm(forms.ModelForm):
     class Meta:

@@ -5,7 +5,6 @@ from main.forms import PostForm, CommentForm
 from django.template import RequestContext
 from main.models.comment import Comment
 from main.models.post import Post
-from main.models.userprofile import UserProfile
 from rest_framework import viewsets
 from main.serializers import CommentSerializer, PostSerializer
 
