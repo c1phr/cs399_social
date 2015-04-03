@@ -10,7 +10,7 @@
 
 
 {% block content %}
-    <h2>{{ post.post_title }} - <a href="http://{{ post.post_link }}">{{ post.post_link }}</a></h2>
+    <h2>{{ post.post_title }} - <a href="{{ post.post_link }}">{{ post.post_link }}</a></h2>
     <h3>Posted by: {{ post.author.username }} - {{ post.post_date }}</h3>
 
     {% if comments %}
