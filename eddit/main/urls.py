@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url(r'^post_comment/', 'main.views.posts.post_comment'),
     url(r'^post_list/', 'main.views.posts.posts_partial'),
     url(r'^posts/', 'main.views.posts.posts', name='posts'),
-    url(r'^users/', 'main.views.users.users', name='users')
+    url(r'^users/', 'main.views.users.users', name='users'),
+    url(r'^user/(?P<id>\d+)/', 'main.views.users.profile', name='profile'),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
