@@ -12,8 +12,12 @@
 	background: url(../../../static/images/splash.png) no-repeat center center fixed;
 }
 
+#title {
+	margin-left: 20%;
+	display: inline-block;
+}
+
 .ghost-button {
-	margin-top: 10%;
 	margin-left: 20%;
 	display: inline-block;
 	width: 200px;
