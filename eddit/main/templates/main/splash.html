@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<title>Awww</title>
+	<link rel="stylesheet" type="text/css" href="../../../static/css/custom.css">
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="splash">
+	<div class="col-xs-12 col-md-8">
+		<h1 id="title">Aww.</h1>
+	</div>
+	<div class="container">
+		<div class="col-xs-12 col-md-8">
+			<div class="ghost-button-full-color">
+				<a class="ghost-button" href="{% url 'newuser' %}">New User</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<div class="ghost-button-full-color">
+				<a class="ghost-button2" href="{% url 'main.views.login.user_login' %}">Existing User</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-8">
+			<div class="ghost-button-full-color">
+				<a class="ghost-button3" href="{% url 'main.views.views.home' %}"><small>Skip</small></a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
