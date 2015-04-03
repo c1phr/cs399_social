@@ -8,3 +8,8 @@ from django.contrib.auth.models import User
 def users(request):
 	user_name = request.GET.get('username', None)
 	return render(request, "main/user.html", {'all_users': User.objects.all(), 'user' : User.objects.filter(username=user_name)})
+
+@login_required
+def profile(request):
+	userID = request.GET.get('id', None)
+	return render(request, "main/profile.html", { 'user' : User.objects.filter(id=userID)})
