@@ -18,11 +18,6 @@ def posts_partial(request):
     return render(request, "main/_post_list.html", {'posts': Post.objects.all()})
 
 @login_required
-def new_post(request):
-    if request.method == 'POST':
-        pass
-
-@login_required
 def post_comment(request):
     if request.method == 'POST':
         comment = Comment()
