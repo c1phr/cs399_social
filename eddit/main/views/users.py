@@ -11,5 +11,17 @@ def users(request):
 
 @login_required
 def profile(request):
-	userID = request.GET.get('id', None)
-	return render(request, "main/profile.html", { 'user' : User.objects.filter(id=userID)})
+	user_name = request.GET.get(pk=int(id))
+	return render(request, "main/profile.html", { 'user' : User.objects.get(pk=int(id))})
+
+@login_required
+def ryan(request):
+	return render(request, "main/dooley.html")
+
+@login_required
+def keevan(request):
+	return render(request, "main/keevan.html")
+
+@login_required
+def justin(request):
+	return render(request, "main/justin.html")
