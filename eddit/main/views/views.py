@@ -14,6 +14,3 @@ def home(request):
 
 def about(request):
     return render(request, 'main/about.html', {})
-
-def splash(request):
-    return render(request, 'main/splash.html', {})
