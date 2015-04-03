@@ -11,8 +11,7 @@ router.register(r'comments', api.CommentViewSet)
 
 urlpatterns = patterns('',
     url(r'^api/', include(router.urls)),
-    url(r'^$', 'main.views.views.splash', name='splash'),
-    url(r'^home/', 'main.views.views.home', name='home'),
+    url(r'^$', 'main.views.views.home', name='home'),
     url(r'^about/', 'main.views.views.about', name='about'),
     url(r'^register/', 'main.views.register.new_user', name='newuser'),
     url(r'^admin/', include(admin.site.urls)),
