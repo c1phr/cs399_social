@@ -1,11 +1,11 @@
 {% extends "main/base.html" %}
 
-{% block title %}User{% endblock %}
+{% block title %}Users{% endblock %}
 
 {% block content %}
-	<center><h1>Some User</h1></center>
 
-	<p>Fixing issues with running the dev server. Will get these created when im up and running</p>
-
+	{% for user in all_users %}
+		<h1><a href="/user/?user={{ user.username }}">{{ user.first_name }}</a></h1>
+	{% endfor %}
 
 {% endblock %}
