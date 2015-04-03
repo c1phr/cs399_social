@@ -1,12 +1,12 @@
 <table class="table table-hover">
         <thead>
-            <th style="width: 25%;">Date</th>
+            <th style="width: 25%;">Upvotes</th>
             <th style="width: 50%;">Title</th>
             <th style="width: 25%;">Author</th>
         </thead>
 {% for post in posts %}
     <tr>
-        <td>{{ post.post_date }}</td>
+        <td>{{ post.upvotes }}</td>
         <td><a href="/posts/?id={{ post.id }}">{{ post.post_title }}</a></td>
         <td>{{ post.author.username }}</td>
     </tr>
